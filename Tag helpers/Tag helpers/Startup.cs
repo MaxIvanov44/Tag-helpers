@@ -1,10 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -50,6 +45,15 @@ namespace Tag_helpers
             {
                 endpoints.MapControllerRoute(
                     name: "default",
+                    pattern: "BookStore",
+                    defaults: new { controller = "Book", action = "Index" });
+                endpoints.MapControllerRoute(
+                    name: "default1",
+                    pattern: "Store/Sub{action}/{id?}",
+                    defaults: new { controller = "Home" });
+
+                endpoints.MapControllerRoute(
+                    name: "default2",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
